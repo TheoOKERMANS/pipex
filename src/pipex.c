@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 12:15:46 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/18 16:53:55 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/18 17:32:20 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv, char **envp)
 	pipex.file_in = open(argv[1], O_RDONLY);
 	if (pipex.file_in < 0)
 		error_msg("Infile");
-	pipex.file_out = open(argv[4], O_TRUNC | O_CREAT | O_WRONLY, 777);
+	pipex.file_out = open(argv[4], O_TRUNC | O_CREAT | O_RDWR, 0644);
 	if (pipex.file_in < 0)
 		error_msg("Outfile");
 	if (pipe(pipex.tube) < 0)
