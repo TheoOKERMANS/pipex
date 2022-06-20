@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/20 11:44:27 by tokerman          #+#    #+#             */
+/*   Updated: 2022/06/20 11:44:47 by tokerman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
@@ -10,12 +22,12 @@
 
 typedef struct s_pipex
 {
-	int	file_in;
-	int	file_out;
-	int	tube[2];
-	char **env_paths;
-	int	pid1;
-	int pid2;
+	int		file_in;
+	int		file_out;
+	int		tube[2];
+	char	**env_paths;
+	int		pid1;
+	int		pid2;
 }	t_pipex;
 
 //err

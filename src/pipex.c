@@ -6,15 +6,11 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 12:15:46 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/18 17:32:20 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:46:10 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
-/*
-Gerer les erreurs
-Free
-*/
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -26,7 +22,7 @@ int	main(int argc, char **argv, char **envp)
 	if (pipex.file_in < 0)
 		error_msg("Infile");
 	pipex.file_out = open(argv[4], O_TRUNC | O_CREAT | O_RDWR, 0644);
-	if (pipex.file_in < 0)
+	if (pipex.file_out < 0)
 		error_msg("Outfile");
 	if (pipe(pipex.tube) < 0)
 		error_msg("Pipe");

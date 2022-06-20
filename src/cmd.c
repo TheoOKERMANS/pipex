@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:38:19 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/18 17:38:26 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:42:54 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	first_cmd(t_pipex *pipex, char **argv, char **envp)
 	if (!full_cmd)
 	{
 		free_spl(cmd);
+		free_pipex(pipex);
 		error_msg("Command not found\n");
 	}
 	execve(full_cmd, cmd, envp);
@@ -45,6 +46,7 @@ void	second_cmd(t_pipex *pipex, char **argv, char **envp)
 	if (!full_cmd)
 	{
 		free_spl(cmd);
+		free_pipex(pipex);
 		error_msg("Command not found\n");
 	}
 	execve(full_cmd, cmd, envp);
