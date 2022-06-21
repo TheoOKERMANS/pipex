@@ -6,11 +6,11 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 12:15:46 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/20 11:46:10 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:18:20 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../includes/pipex.h"
 
 int	main(int argc, char **argv, char **envp)
 {

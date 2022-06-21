@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err.c                                              :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 16:38:53 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/18 16:53:11 by tokerman         ###   ########.fr       */
+/*   Created: 2022/06/18 16:42:29 by tokerman          #+#    #+#             */
+/*   Updated: 2022/06/21 11:19:17 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../includes/pipex_bonus.h"
 
-int	msg(char *err)
+void	free_spl(char **spl)
 {
-	write(2, err, ft_strlen(err));
-	return (1);
+	size_t	i;
+
+	i = 0;
+	while (spl && spl[i] != NULL)
+		free(spl[i++]);
+	free(spl);
 }
 
-void	error_msg(char *msg)
+void	free_pipex(t_pipex *pipex)
 {
-	perror(msg);
-	exit(1);
+	close(pipex->file_in);
+	close(pipex->file_out);
+	free_spl(pipex->env_paths);
 }

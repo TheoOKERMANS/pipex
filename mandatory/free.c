@@ -6,11 +6,11 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:42:29 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/18 16:50:54 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:18:25 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../includes/pipex.h"
 
 void	free_spl(char **spl)
 {

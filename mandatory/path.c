@@ -6,11 +6,11 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:40:53 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/18 16:55:38 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:18:22 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../includes/pipex.h"
 
 char	**get_env_paths(char **envp)
 {

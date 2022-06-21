@@ -6,11 +6,11 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:38:19 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/20 11:42:54 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:18:30 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../includes/pipex.h"
 
 void	first_cmd(t_pipex *pipex, char **argv, char **envp)
 {
