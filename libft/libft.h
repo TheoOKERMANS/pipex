@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:39:37 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/18 16:03:24 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/21 15:30:19 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_putstrtab_fd(char **s, int fd);
+void	ft_putinttab_fd(int *tab, size_t size, int fd);
+void	ft_put2dinttab_fd(int **tab, size_t h, size_t w, int fd);
 
 //ft_printf
 int		printf_hexa_lowcase(unsigned int i);

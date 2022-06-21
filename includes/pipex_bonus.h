@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:44:27 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/21 12:17:42 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/21 15:56:12 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,31 @@ typedef struct s_pipex
 {
 	int		file_in;
 	int		file_out;
-	int		nb_pipe;
 	int		nb_cmd;
 	int		icmd;
-	int		*pipe;
+	int		**pipe;
 	char	**env_paths;
 }	t_pipex;
 
+/*
+typedef struct s_pipex
+{
+	int		file_in;
+	int		file_out;
+	int		nb_pipe;
+	int		nb_cmd;
+	int		icmd;
+	int		pipe[2];
+	char	**env_paths;
+}	t_pipex;
+*/
 //err
 void	error_msg(char *msg);
 int		msg(char *err);
 
 //cmd
-void	close_pipe(t_pipex *pipex);
-void	cmd(t_pipex *pipex, char **argv, char **envp);
+void	close_pipe(t_pipex *pipex, int in, int out);
+int		cmd(t_pipex *pipex, char **argv, char **envp);
 
 //path
 char	**get_env_paths(char **envp);

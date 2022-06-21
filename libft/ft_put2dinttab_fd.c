@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_bonus.c                                       :+:      :+:    :+:   */
+/*   ft_put2dinttab_fd.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 16:42:29 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/21 16:15:17 by tokerman         ###   ########.fr       */
+/*   Created: 2022/06/21 15:31:12 by tokerman          #+#    #+#             */
+/*   Updated: 2022/06/21 15:58:08 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex_bonus.h"
+#include "libft.h"
 
-void	free_spl(char **spl)
+void	ft_put2dinttab_fd(int **tab, size_t h, size_t w, int fd)
 {
 	size_t	i;
 
 	i = 0;
-	while (spl && spl[i] != NULL)
-		free(spl[i++]);
-	free(spl);
-}
-
-void	free_pipex(t_pipex *pipex)
-{
-	int	i;
-	close(pipex->file_in);
-	close(pipex->file_out);
-	free_spl(pipex->env_paths);
-	i = 0;
-	while (i < pipex->nb_cmd - 1)
-		free(pipex->pipe[i++]);
-	free(pipex->pipe);
+	while (tab && i < h)
+	{
+		ft_putinttab_fd(tab[i], w, fd);
+		i++;
+	}
 }
