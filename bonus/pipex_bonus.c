@@ -6,32 +6,43 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 12:15:46 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/21 16:38:02 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:52:02 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 Norminette
 Makefile
-Erreur
+Erreur/messages
 Free/valgrind
-
+.h clean avec toutes les fonctions
 
 */
 
-
 #include "../includes/pipex_bonus.h"
+
+void get_file_in(t_pipex *pipex, char **argv)
+{
+	if (!ft_strncmp("here_doc", argv[1], 9))
+	{
+		return ;
+	}
+	else
+	{
+		pipex->file_in = open(argv[1], O_RDONLY);
+		if (pipex->file_in < 0)
+			error_msg("Infile");
+	}
+}
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
-	int i;
+	int 	i;
 
 	if (argc < 4)
 		return (msg("Invalid number of arguments.\n"));
-	pipex.file_in = open(argv[1], O_RDONLY);
-	if (pipex.file_in < 0)
-		error_msg("Infile");
+	get_file_in(&pipex, argv);
 	pipex.file_out = open(argv[argc - 1], O_TRUNC | O_CREAT | O_RDWR, 0644);
 	if (pipex.file_out < 0)
 		error_msg("Outfile");
