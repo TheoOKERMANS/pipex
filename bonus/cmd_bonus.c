@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:38:19 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/21 16:21:20 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/22 14:07:25 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	cmd(t_pipex *pipex, char **argv, char **envp)
 	pid = fork();
 	if (pid == 0)
 	{
-		cmd = ft_split(argv[pipex->icmd + 2], ' ');
+		cmd = ft_split(argv[pipex->icmd + 2 + pipex->here_doc], ' ');
 		full_cmd = get_full_cmd(pipex->env_paths, cmd[0]);
 		pipe = get_pipe(pipex);
 		change_pipe(pipex, pipe[0], pipe[1]);		

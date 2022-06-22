@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:44:27 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/21 16:45:30 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/22 13:58:58 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_pipex
 	int		icmd;
 	int		**pipe;
 	char	**env_paths;
+	int		here_doc;
 }	t_pipex;
 
 //err

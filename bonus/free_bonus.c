@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:42:29 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/21 16:15:17 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/22 14:09:07 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	free_pipex(t_pipex *pipex)
 	int	i;
 	close(pipex->file_in);
 	close(pipex->file_out);
+	if (pipex->here_doc)
+		unlink(".here_doc");
 	free_spl(pipex->env_paths);
 	i = 0;
 	while (i < pipex->nb_cmd - 1)
