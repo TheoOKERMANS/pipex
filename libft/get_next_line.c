@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 01:50:20 by tokerman          #+#    #+#             */
-/*   Updated: 2022/05/31 17:27:41 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:00:50 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,11 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		if (save != NULL)
+			free(save);
 		return (NULL);
+	}
 	save = get_str_from_file(fd, save);
 	if (save == NULL)
 		return (NULL);

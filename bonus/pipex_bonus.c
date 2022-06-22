@@ -6,17 +6,15 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 12:15:46 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/22 14:09:58 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:01:34 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 Norminette
-Makefile
 Erreur/messages
 Free/valgrind
 .h clean avec toutes les fonctions
-test here_doc
 */
 
 #include "../includes/pipex_bonus.h"
@@ -40,6 +38,7 @@ void	here_doc(t_pipex *pipex, char **argv)
 		write(fd, buf, ft_strlen(buf));
 		free(buf);
 	}
+	get_next_line(-1);
 	free(buf);
 	close(fd);
 	pipex->file_in = open(".here_doc", O_RDONLY);
