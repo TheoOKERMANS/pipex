@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:38:19 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/21 11:18:30 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/09/29 15:11:44 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ void	first_cmd(t_pipex *pipex, char **argv, char **envp)
 	full_cmd = get_full_cmd(pipex->env_paths, cmd[0]);
 	if (!full_cmd)
 	{
+		write(2, "zsh: command not found: ", 24);
+		write(2, cmd[0], ft_strlen(cmd[0]));
+		write(2, "\n", 1);
 		free_spl(cmd);
 		free_pipex(pipex);
-		error_msg("Command not found\n");
+		exit(1);
 	}
 	execve(full_cmd, cmd, envp);
 	free_spl(cmd);
@@ -45,9 +48,12 @@ void	second_cmd(t_pipex *pipex, char **argv, char **envp)
 	full_cmd = get_full_cmd(pipex->env_paths, cmd[0]);
 	if (!full_cmd)
 	{
+		write(2, "zsh: command not found: ", 24);
+		write(2, cmd[0], ft_strlen(cmd[0]));
+		write(2, "\n", 1);
 		free_spl(cmd);
 		free_pipex(pipex);
-		error_msg("Command not found\n");
+		exit(1);
 	}
 	execve(full_cmd, cmd, envp);
 	free_spl(cmd);
