@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:40:53 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/21 11:18:22 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:52:12 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*get_full_cmd(char **env_paths, char *cmd)
 	char	*path;
 	char	*full_cmd;
 
+	if (ft_strlen(cmd) > 2 && cmd[0] == '.' && cmd[1] == '/')
+		return (ft_strdup(cmd + 2));
 	while (env_paths && *env_paths != NULL)
 	{
 		path = ft_strjoin(*env_paths, "/");

@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:44:27 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/22 13:58:58 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:24:19 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_pipex
 //err
 void	error_msg(char *msg);
 int		msg(char *err);
+void	error_open_hd(void);
+void	error_cmd_not_found(char *cmd);
 
 //cmd
 void	close_pipe(t_pipex *pipex, int in, int out);

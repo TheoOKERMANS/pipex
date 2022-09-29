@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:57:20 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/21 15:35:10 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:53:26 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putinttab_fd(int *tab, size_t size, int fd)
 {
-	char 	*str;
+	char	*str;
 	size_t	i;
 
 	i = 0;
