@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 12:15:46 by tokerman          #+#    #+#             */
-/*   Updated: 2022/09/29 18:20:40 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/10/24 05:15:26 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	init_pipex(t_pipex *pipex, char **argv, int argc)
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
-	int		i;
 
 	if (argc < 4)
 		return (msg("Invalid number of arguments.\n"));
@@ -91,9 +90,7 @@ int	main(int argc, char **argv, char **envp)
 		(pipex.icmd)++;
 	}
 	close_pipe(&pipex, -1, -1);
-	i = 0;
-	while (i++ < pipex.nb_cmd)
-		waitpid(-1, NULL, 0);
+	waitpid(-1, NULL, 0);
 	close(pipex.file_in);
 	close(pipex.file_out);
 	free_pipex(&pipex);

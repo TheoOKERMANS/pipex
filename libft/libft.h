@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:39:37 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/21 15:30:19 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/10/24 03:50:53 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_str
+{
+	char			c;
+	struct s_str	*next;
+}	t_str;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -94,5 +100,14 @@ char	*get_next_line(int fd);
 //hex
 int		hex_to_int(char *str);
 int		char_hex_to_int(char c);
+
+//tstr
+t_str	*new_tstr(char c);
+void	add_back_tstr(t_str **list, t_str *new);
+void	free_tstr(t_str *tstr);
+char	*get_str_from_tstr(t_str *tstr);
+
+//smart split
+char	**smart_split(char *str);
 
 #endif
