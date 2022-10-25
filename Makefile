@@ -66,6 +66,7 @@ fclean:
 	@make print_separator --no-print-directory
 
 bonus: fclean
+	@printf "\n"
 	@make -C ./libft --no-print-directory
 	@printf "\n"
 	@make print_separator --no-print-directory

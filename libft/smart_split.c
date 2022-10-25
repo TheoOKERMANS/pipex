@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 03:33:46 by tokerman          #+#    #+#             */
-/*   Updated: 2022/10/24 05:55:25 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:21:07 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,13 @@ int	sp_nb_wrd(char *str)
 	return (nb_word);
 }
 
-char	**smart_split(char *str)
+char	**sub_smart_split(char *str, int nb_word, char *tmp, int quotes)
 {
 	char	**res;
-	int		nb_word;
-	char	*tmp;
-	int		quotes;
 	t_str	*tstr;
 
-	if (str == NULL || *str == '\0')
-		return (NULL);
 	res = ft_calloc(sp_nb_wrd(str) + 1, sizeof(char *));
 	tstr = NULL;
-	nb_word = 0;
-	tmp = str;
-	quotes = 0;
 	while (tmp && *tmp)
 	{
 		if (quotes == 0 && (*tmp == '\'' || *tmp == '"' || *tmp == '`'))
@@ -68,4 +60,18 @@ char	**smart_split(char *str)
 	if (tstr)
 		res[nb_word] = get_str_from_tstr(tstr);
 	return (res);
+}
+
+char	**smart_split(char *str)
+{
+	int		nb_word;
+	char	*tmp;
+	int		quotes;
+
+	if (str == NULL || *str == '\0')
+		return (NULL);
+	nb_word = 0;
+	tmp = str;
+	quotes = 0;
+	return (sub_smart_split(str, nb_word, tmp, quotes));
 }
