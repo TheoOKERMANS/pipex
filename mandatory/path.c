@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:40:53 by tokerman          #+#    #+#             */
-/*   Updated: 2022/10/24 03:13:45 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:08:32 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,27 @@ char	*get_full_cmd(char **env_paths, char *cmd)
 		env_paths++;
 	}
 	return (NULL);
+}
+
+char	**get_executable_spl(char *argv, char *full_cmd)
+{
+	int		len;
+	char	**spl;
+	char	**res;
+
+	spl = smart_split(argv);
+	len = 0;
+	while (spl[len] != NULL)
+		len++;
+	len += 2;
+	res = ft_calloc(len, sizeof(char *));
+	res[0] = ft_strdup(full_cmd);
+	len = 0;
+	while (spl[len] != NULL)
+	{
+		res[len + 1] = ft_strdup(spl[len]);
+		len++;
+	}
+	free_spl(spl);
+	return (res);
 }

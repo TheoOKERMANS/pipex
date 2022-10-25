@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:38:19 by tokerman          #+#    #+#             */
-/*   Updated: 2022/10/24 05:14:39 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:03:16 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ void	close_pipe(t_pipex *pipex, int in, int out)
 			close(pipex->pipe[i][1]);
 		i++;
 	}
-}
-
-void	change_pipe(t_pipex *pipex, int in, int out)
-{
-	close_pipe(pipex, in, out);
-	dup2(in, 0);
-	dup2(out, 1);
 }
 
 int	*get_pipe(t_pipex *pipex)
@@ -61,20 +54,47 @@ int	*get_pipe(t_pipex *pipex)
 	return (pipe);
 }
 
+void	change_pipe(t_pipex *pipex)
+{
+	int	*pipe;
+
+	pipe = get_pipe(pipex);
+	close_pipe(pipex, pipe[0], pipe[1]);
+	dup2(pipe[0], 0);
+	dup2(pipe[1], 1);
+}
+
+void	exec_file(t_pipex *pipex, char **argv, char **envp)
+{
+	char	**cmd;
+	char	*full_cmd;
+
+	cmd = smart_split(argv[pipex->icmd + 2 + pipex->here_doc]);
+	execve(cmd[0], cmd, envp);
+	full_cmd = get_full_cmd(pipex->env_paths, cmd[0]);
+	free_spl(cmd);
+	cmd = get_executable_spl(pipex, argv, full_cmd);
+	execve(cmd[0], cmd, envp);
+	free_spl(cmd);
+	free(full_cmd);
+	exit(1);
+}
+
 int	cmd(t_pipex *pipex, char **argv, char **envp)
 {
 	char	**cmd;
 	char	*full_cmd;
 	int		pid;
-	int		*pipe;
 
 	pid = fork();
 	if (pid == 0)
 	{
+		if (argv[pipex->icmd + 2 + pipex->here_doc][0] == '.'
+			&& argv[pipex->icmd + 2 + pipex->here_doc][1] == '/')
+			exec_file(pipex, argv, envp);
 		cmd = smart_split(argv[pipex->icmd + 2 + pipex->here_doc]);
 		full_cmd = get_full_cmd(pipex->env_paths, cmd[0]);
-		pipe = get_pipe(pipex);
-		change_pipe(pipex, pipe[0], pipe[1]);
+		change_pipe(pipex);
 		if (!full_cmd)
 		{
 			error_cmd_not_found(cmd[0]);

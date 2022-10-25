@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 03:36:04 by tokerman          #+#    #+#             */
-/*   Updated: 2022/10/24 04:39:46 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/10/24 05:47:06 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_str	*new_tstr(char c)
 void	add_back_tstr(t_str **list, t_str *new)
 {
 	t_str	*tmp;
-	
+
 	if (list)
 	{
 		if (*list)

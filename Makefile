@@ -16,7 +16,7 @@ BONUS_FOLDER = bonus/
 OBJ_BONUS = $(BONUS:.c=.o)
 LIBFT = -L libft/ -lft
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 NAME = pipex
 
 #-----------TXT-----------

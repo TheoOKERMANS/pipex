@@ -6,7 +6,7 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:44:27 by tokerman          #+#    #+#             */
-/*   Updated: 2022/06/20 11:44:47 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:08:35 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	second_cmd(t_pipex *pipex, char **argv, char **envp);
 //path
 char	**get_env_paths(char **envp);
 char	*get_full_cmd(char **env_paths, char *cmd);
+char	**get_executable_spl(char *argv, char *full_cmd);
 
 //free
 void	free_spl(char **spl);

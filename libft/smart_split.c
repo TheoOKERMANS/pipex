@@ -6,24 +6,19 @@
 /*   By: tokerman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 03:33:46 by tokerman          #+#    #+#             */
-/*   Updated: 2022/10/24 04:40:35 by tokerman         ###   ########.fr       */
+/*   Updated: 2022/10/24 05:55:25 by tokerman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-char	**smart_split(char *str)
+int	sp_nb_wrd(char *str)
 {
-	char	**res;
 	int		nb_word;
 	char	*tmp;
 	int		quotes;
-	t_str	*tstr;
 
-	if (str == NULL || *str == '\0')
-		return (NULL);
-		
 	nb_word = 1;
 	tmp = str;
 	quotes = 0;
@@ -37,9 +32,20 @@ char	**smart_split(char *str)
 			nb_word++;
 		tmp++;
 	}
+	return (nb_word);
+}
 
-	res = ft_calloc(nb_word + 1, sizeof(char *));
-	
+char	**smart_split(char *str)
+{
+	char	**res;
+	int		nb_word;
+	char	*tmp;
+	int		quotes;
+	t_str	*tstr;
+
+	if (str == NULL || *str == '\0')
+		return (NULL);
+	res = ft_calloc(sp_nb_wrd(str) + 1, sizeof(char *));
 	tstr = NULL;
 	nb_word = 0;
 	tmp = str;
@@ -52,9 +58,8 @@ char	**smart_split(char *str)
 			quotes = 0;
 		else if (*tmp == ' ' && quotes == 0 && tmp != str && *(tmp - 1) != ' ')
 		{
-			res[nb_word] = get_str_from_tstr(tstr);
+			res[nb_word++] = get_str_from_tstr(tstr);
 			tstr = NULL;
-			nb_word++;
 		}
 		else
 			add_back_tstr(&tstr, new_tstr(*tmp));
